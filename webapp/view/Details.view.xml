@@ -11,14 +11,18 @@
 									</Toolbar>
 								</headerToolbar>
 								<columns>
-									<Column>
+									<Column
+										minScreenWidth="Tablet"
+										demandPopin="true">
 										<Text text="Approver" />
 									</Column>
 									<Column>
 										<Text text="Phone" />
 									</Column>
-									<Column>
-										<Text text="Email" />
+									<Column
+										minScreenWidth="Tablet"
+										demandPopin="true">
+										<Text text="Email"  />
 									</Column>
 									<Column>
 										<Text text="State" />

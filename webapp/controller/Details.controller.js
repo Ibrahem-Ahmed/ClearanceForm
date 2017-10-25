@@ -23,7 +23,8 @@ sap.ui.define([
 			// build same structure of table column in xml view
 			var oTemplate = new sap.m.ColumnListItem({
 			    cells : [
-			        new sap.m.Text({
+			        new sap.m.ObjectIdentifier({
+			        	title:"{ApproverEmployee}",
 			            text : "{EmployeeName}"
 			        }),
 			        new sap.m.Text({

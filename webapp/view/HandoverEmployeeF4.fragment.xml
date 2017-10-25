@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		noDataText="No Data"
+		title="Handover Employee Number"
+		search="handleSearch"
+		confirm="handleClose"
+		items="{
+			path: 'ClearanceRequestModel>/EmployeeOrgSet'
+		}" >
+		<StandardListItem
+			title="{ClearanceRequestModel>EmployeeNo}"
+			description="{ClearanceRequestModel>Name}"
+			iconDensityAware="false"
+			iconInset="false"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

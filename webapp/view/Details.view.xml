@@ -1,0 +1,32 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="ClearanceForm.controller.Details">
+	<App>
+		<pages>
+			<Page title="Details">
+				<content>		
+				    <Table id="idProductsTable"
+							inset="false">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="Approvers" level="H2"/>
+									</Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column>
+										<Text text="Approver" />
+									</Column>
+									<Column>
+										<Text text="Phone" />
+									</Column>
+									<Column>
+										<Text text="Email" />
+									</Column>
+									<Column>
+										<Text text="State" />
+									</Column>
+								</columns>
+						</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

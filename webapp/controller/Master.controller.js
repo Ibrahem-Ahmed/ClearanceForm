@@ -10,8 +10,8 @@ sap.ui.define([
 			this.getView().setModel(this.oDataModel);
 			
 			//navigate to detail view with null value
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.navTo("Details",{ClNum: " "});
+			// var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			// oRouter.navTo("Details",{ClNum: " "});
 			
 		},
 		

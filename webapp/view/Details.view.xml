@@ -1,36 +1,50 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="ClearanceForm.controller.Details">
 	<App>
-		<pages>
-			<Page title="Details">
-				<content>		
-				    <Table id="idProductsTable"
-							inset="false">
-								<headerToolbar>
-									<Toolbar>
-										<Title text="Approvers" level="H2"/>
-									</Toolbar>
-								</headerToolbar>
-								<columns>
-									<Column
-										minScreenWidth="Tablet"
-										demandPopin="true">
-										<Text text="Approver" />
-									</Column>
-									<Column>
-										<Text text="Phone" />
-									</Column>
-									<Column
-										minScreenWidth="Tablet"
-										demandPopin="true">
-										<Text text="Email"  />
-									</Column>
-									<Column>
-										<Text text="State" />
-									</Column>
-								</columns>
-						</Table>
-				</content>
-			</Page>
-		</pages>
+		<Page title="Details">
+			<content>		
+			    <Table id="idProductsTable"
+						inset="false">
+							<headerToolbar>
+								<Toolbar>
+									<Title text="Approvers" level="H2"/>
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column
+									minScreenWidth="Tablet"
+									demandPopin="true">
+									<Text text="Approver" />
+								</Column>
+								<Column
+									demandPopin="true"
+									width="8em">
+									<Text text="Phone" />
+								</Column>
+								<Column
+									minScreenWidth="Tablet"
+									demandPopin="true">
+									<Text text="Email"  />
+								</Column>
+								<Column
+									minScreenWidth="Tablet"
+									demandPopin="true">
+									<Text text="Remarks"  />
+								</Column>
+								<Column
+									width="8em"
+									hAlign="Center">
+									<Text text="State" />
+								</Column>
+							</columns>
+					</Table>
+			</content>
+			<footer>
+			    <Bar class="sapContrast sapContrastPlus" id="__bar1">
+			        <contentRight>
+			            <Button text="{i18n>Withdraw}" width="150px" id="__button0" icon="sap-icon://delete" press="WithdrawRequest"/>
+			        </contentRight>
+			    </Bar>
+			</footer>
+		</Page>
 	</App>
 </mvc:View>

@@ -52,42 +52,39 @@ sap.ui.define([
 		
 		WithdrawRequest:function(oEvent){
 			var that = this;
-			//display loading
-			// var oDialog = sap.ui.xmlfragment("ClearanceForm.view.BusyDialog", this);
-			// oDialog.open();
 			
-	    	var _SuccessMessage = this.getView().getModel("i18n").getResourceBundle().getText("RequestCreated");
-	    	var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
-	    	
-			this.oDataModel.callFunction("/Withdraw",
-                {method:"POST",
-                urlParameters:{"ClNum" : this.oArgs.ClNum},
-                success: function(oData, response) {
-						MessageBox.success(
-						_SuccessMessage,
-						{
-							styleClass: bCompact? "sapUiSizeCompact" : "",
-							onClose: function(){
-								// // go to main view 
-								// that.getOwnerComponent().getRouter().navTo("", true);
-							}
-						});
-						// oDialog.close();
-                    }, // callback function for success
-                error: function(oError){
-						var _oJson = new sap.ui.model.json.JSONModel();
-						_oJson.setJSON(oError.responseText);
-						// set message
-						MessageBox.error(
-							_oJson.getProperty("/error/message/value"),
-							{
-								styleClass: bCompact? "sapUiSizeCompact" : ""
+			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+			sap.m.MessageBox.confirm(this.getView().getModel("i18n").getResourceBundle().getText("WithdrawConfirm"), 
+			{
+			    title: "Confirm",                                   
+			    onClose: function(oAction){
+			    	if (oAction === "OK"){
+						var _SuccessMessage = that.getView().getModel("i18n").getResourceBundle().getText("WithdrawRequest");
+						that.oDataModel.callFunction("/Withdraw",
+			                {method:"POST",
+			                urlParameters:{"ClNum" : that.oArgs.ClNum},
+			                success: function(oData, response) {
+									MessageBox.success(_SuccessMessage);
+			                    },
+			                error: function(oError){
+									var _oJson = new sap.ui.model.json.JSONModel();
+									_oJson.setJSON(oError.responseText);
+									// set message
+									MessageBox.error(
+										_oJson.getProperty("/error/message/value"),
+										{ styleClass: bCompact? "sapUiSizeCompact" : "" }
+									);
+								}
 							});
-						// oDialog.close();
-                	}
-                }); // callback function for error
-			// oDialog.destroy();
+					}
+			    },                                     
+				styleClass: bCompact? "sapUiSizeCompact" : "",
+				initialFocus: null,
+				textDirection: sap.ui.core.TextDirection.Inherit
+				}
+			);
 		}
+		
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 		 * (NOT before the first rendering! onInit() is used for that one!).

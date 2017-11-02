@@ -24,7 +24,6 @@
 			}
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -45,7 +44,6 @@
 			"sap_belize"
 		]
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "ClearanceForm.view.SplitApp",
@@ -84,11 +82,12 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
-			
 		"routing": {
 			"config": {
 				"routerClass": "sap.m.routing.Router",
@@ -101,33 +100,38 @@
 					"name": "SplitApp",
 					"view": "SplitApp",
 					"controlAggregation": "pages",
-					
-					"subroutes":[{
-						"pattern": "",
-						"name": "Master",
-						"view": "Master",
-						"controlId":"SplitApp",
-						"targetAggregation": "masterPages",
-						
-						"subroutes":[
+					"subroutes": [
 						{
-							"pattern": "Details/{ClNum}",
-							"name": "Details",
-							"view": "Details",
-							"targetAggregation": "detailPages",
-							"viewLevel":1
-						},
-						{
-							"pattern": "CreateRequest",
-							"name": "CreateRequest",
-							"view": "CreateRequest",
-							"targetAggregation": "detailPages",
-							"transition":"flip",
-							"viewLevel":0
+							"pattern": "",
+							"name": "Master",
+							"view": "Master",
+							"controlId": "SplitApp",
+							"targetAggregation": "masterPages",
+							"subroutes": [
+								{
+									"pattern": "Details/{ClNum}",
+									"name": "Details",
+									"view": "Details",
+									"targetAggregation": "detailPages",
+									"viewLevel": 1
+								},
+								{
+									"pattern": "CreateRequest",
+									"name": "CreateRequest",
+									"view": "CreateRequest",
+									"targetAggregation": "detailPages",
+									"transition": "flip",
+									"viewLevel": 0
+								}
+							]
 						}
 					]
-				}]
-			}
-		]}
+				}
+			]
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zclearform_tst1/webapp",
+		"_version": "1.1.0"
 	}
 }

@@ -39,8 +39,9 @@ sap.ui.define([
 			        new sap.m.Text({
 			            text : "{Remarks}"
 			        }),
-			        new sap.m.Text({
-			            text : "{State}"
+			        new sap.m.ObjectStatus({
+			            text : "{State}",
+			            state: "{path: 'State', formatter: 'ClearanceForm.formatter.Formatter.status'}" 
 			        })
 			    ]
 			});

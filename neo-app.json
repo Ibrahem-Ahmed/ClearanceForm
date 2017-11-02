@@ -26,14 +26,6 @@
         "name": "alnasser"
       },
       "description": "alnasser OData Service"
-    },
-    {
-      "path": "/destination/ODataTest",
-      "target": {
-        "type": "destination",
-        "name": "northwind"
-      },
-      "description": "Northwind destination"
     }
   ],
   "cacheControl": [

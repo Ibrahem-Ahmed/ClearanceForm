@@ -1,11 +1,21 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="ClearanceForm.controller.Master">
+<mvc:View	xmlns:core="sap.ui.core"
+			xmlns:mvc="sap.ui.core.mvc" 
+			xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" 
+			controllerName="ClearanceForm.controller.Master">
 	<App>
 		<pages>
 			<Page title="Master">
 				<content>
-				    <List noDataText="{i18n>NoData}" id="__list0" items="{/ClearanceFormHeaderSet}" growing="true" growingScrollToLoad="true">
+				    <List noDataText="{i18n>NoData}" id="__list0" items="{/ClearanceFormHeaderSet}" growing="true" 
+				    		growingScrollToLoad="true">
 				        <items>
-				            <StandardListItem type="Navigation" title="{From}- {To}" description="{FormTypeDesc}" info="{State}" id="__item0" press="GoToLineItem"/>
+				            <StandardListItem type="Navigation" title="{From}- {To}" description="{FormTypeDesc}" info="{State}" 
+				            					id="__item0" press="GoToLineItem" 
+				            					infoState=
+				            					"{
+				            						path: 'State',
+													formatter: 'ClearanceForm.formatter.Formatter.status'
+												}"/>
 				            </items>
 				    </List>
 				</content>

@@ -6,7 +6,8 @@
   "build": {
     "targetFolder": "dist",
     "sourceFolder": "webapp",
-    "buildRequired": true
+    "buildRequired": true,
+    "lastBuildDateTime": "Mon, 30 Oct 2017 09:31:38 GMT"
   },
   "generation": [
     {
@@ -43,5 +44,9 @@
     "notifyBeforePushLevel": "Error",
     "blockPush": false,
     "blockPushLevel": "Error"
+  },
+  "deploy": {
+    "destination": "alnasser",
+    "name": "ZClearForm_TST1"
   }
 }

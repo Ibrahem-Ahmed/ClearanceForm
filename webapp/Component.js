@@ -1,11 +1,13 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-	"ClearanceForm/model/models"
-], function(UIComponent, Device, models) {
+	"ClearanceForm/model/models",
+	"ClearanceForm/formatter/Formatter"
+], function(UIComponent, Device, models,Formatter) {
 	"use strict";
 
 	return UIComponent.extend("ClearanceForm.Component", {
+		formatter: Formatter,
 
 		metadata: {
 			manifest: "json"

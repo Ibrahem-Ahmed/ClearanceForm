@@ -163,16 +163,20 @@ sap.ui.define([
 			oEntry.Remarks = this.getView().byId("RemarksText").getValue();
 			
 	    	var _SuccessMessage = this.getView().getModel("i18n").getResourceBundle().getText("RequestCreated");
+	    	var _SuccessTitle = this.getView().getModel("i18n").getResourceBundle().getText("SuccessTitle");
+			var _ErrorTitle = this.getView().getModel("i18n").getResourceBundle().getText("ErrorTitle");
 	    	var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
 			//post request
 			this.oDataModel.create("/ClearanceFormHeaderSet", oEntry, {
 			    method: "POST",
 			    success: function(data) {
 			    	//set message
-					MessageBox.success(
+					MessageBox.show(
 						_SuccessMessage,
 						{
-							styleClass: bCompact? "sapUiSizeCompact" : "",
+							styleClass: bCompact ? "sapUiSizeCompact" : "",
+							title: _SuccessTitle,
+							icon: sap.m.MessageBox.Icon.SUCCESS,
 							onClose: function(){
 								//Clear fields
 								that.getView().byId("HandOverEmp").setValue("");
@@ -181,20 +185,24 @@ sap.ui.define([
 								that.getView().byId("LeaveReqId").setDescription("");
 								that.getView().byId("RemarksText").setValue("");
 								// go to main view 
-								that.getOwnerComponent().getRouter().navTo("", true);
+								// that.getOwnerComponent().getRouter().navTo("", true);
+								that.oDataModel.refresh();
+								that.navBackward();
 							}
 						}
 					);
 			    },
 			    error: function(oError) {
 			    	// MessageToast.show(oError.message);
-			    	var _oJson = new sap.ui.model.json.JSONModel();
+					var _oJson = new sap.ui.model.json.JSONModel();
 			    	_oJson.setJSON(oError.responseText);
-			    	//set message
-					MessageBox.error(
+					//set message
+					MessageBox.alert(
 						_oJson.getProperty("/error/message/value"),
-						{
-							styleClass: bCompact? "sapUiSizeCompact" : ""
+						{	
+							icon: sap.m.MessageBox.Icon.ERROR,
+							styleClass: bCompact ? "sapUiSizeCompact" : "",
+							title: _ErrorTitle
 						});
 					this.oDialog.close();
 			    }

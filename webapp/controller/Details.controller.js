@@ -55,25 +55,38 @@ sap.ui.define([
 			var that = this;
 			
 			var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+			var _SuccessMessage = that.getView().getModel("i18n").getResourceBundle().getText("WithdrawRequest");
+			var _SuccessTitle = this.getView().getModel("i18n").getResourceBundle().getText("SuccessTitle");
+			var _ErrorTitle = this.getView().getModel("i18n").getResourceBundle().getText("ErrorTitle");
 			sap.m.MessageBox.confirm(this.getView().getModel("i18n").getResourceBundle().getText("WithdrawConfirm"), 
 			{
-			    title: "Confirm",                                   
+			    title: "Confirm",
+			    icon: sap.m.MessageBox.Icon.QUESTION,
 			    onClose: function(oAction){
 			    	if (oAction === "OK"){
-						var _SuccessMessage = that.getView().getModel("i18n").getResourceBundle().getText("WithdrawRequest");
 						that.oDataModel.callFunction("/Withdraw",
 			                {method:"POST",
 			                urlParameters:{"ClNum" : that.oArgs.ClNum},
 			                success: function(oData, response) {
-									MessageBox.success(_SuccessMessage);
+									MessageBox.show(_SuccessMessage,
+									{
+										styleClass: bCompact ? "sapUiSizeCompact" : "",
+										title: _SuccessTitle,
+										icon: sap.m.MessageBox.Icon.SUCCESS
+									});
+									that.oDataModel.refresh();
 			                    },
 			                error: function(oError){
 									var _oJson = new sap.ui.model.json.JSONModel();
 									_oJson.setJSON(oError.responseText);
 									// set message
-									MessageBox.error(
+									MessageBox.alert(
 										_oJson.getProperty("/error/message/value"),
-										{ styleClass: bCompact? "sapUiSizeCompact" : "" }
+										{ 
+											icon: sap.m.MessageBox.Icon.ERROR,
+											styleClass: bCompact ? "sapUiSizeCompact" : "",
+											title: _ErrorTitle
+										}
 									);
 								}
 							});

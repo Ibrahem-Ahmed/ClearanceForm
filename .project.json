@@ -6,8 +6,8 @@
   "build": {
     "targetFolder": "dist",
     "sourceFolder": "webapp",
-    "buildRequired": true,
-    "lastBuildDateTime": "Mon, 30 Oct 2017 09:31:38 GMT"
+    "buildRequired": false,
+    "lastBuildDateTime": "Wed, 15 Nov 2017 13:14:22 GMT"
   },
   "generation": [
     {
@@ -47,6 +47,6 @@
   },
   "deploy": {
     "destination": "alnasser",
-    "name": "ZClearForm_TST1"
+    "name": "ZCLEARFORM"
   }
 }
